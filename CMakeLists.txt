@@ -13,3 +13,7 @@ add_executable(main main.cpp Publisher.cpp Publisher.hpp SubscriberWorker.cpp Su
 target_link_libraries(main ${CONAN_LIBS})
 target_include_directories(main PUBLIC ${CONAN_INCLUDE_DIRS_CPPZMQ} ${CONAN_INCLUDE_DIRS_ZEROMQ})
 target_link_directories(main PUBLIC ${CONAN_LIB_DIRS})
+
+if (WIN32)
+    set_target_properties(main PROPERTIES COMPILE_FLAGS "/DZMQ_STATIC")
+endif (WIN32)
